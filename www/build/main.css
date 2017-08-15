@@ -25198,3 +25198,13 @@ ion-navbar.toolbar {
     padding-top: calc(16px + 20px);
   }
 }
+
+page-login .logo {
+  margin: 0 auto;
+  display: block;
+}
+
+page-login ion-card ion-row {
+  padding: 10px;
+  float: right;
+}
