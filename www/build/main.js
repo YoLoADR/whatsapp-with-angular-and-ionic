@@ -23,23 +23,27 @@ webpackEmptyAsyncContext.id = 106;
 var map = {
 	"../pages/channels/channels.module": [
 		267,
-		10
+		12
 	],
 	"../pages/inbox/inbox.module": [
 		265,
-		9
+		11
 	],
 	"../pages/login/login.module": [
 		261,
-		6
+		8
 	],
 	"../pages/profile/profile.module": [
 		269,
-		5
+		7
 	],
 	"../pages/register/register.module": [
 		263,
-		2
+		4
+	],
+	"../pages/tabs/tabs.module": [
+		271,
+		3
 	]
 };
 function webpackAsyncContext(req) {
@@ -113,7 +117,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inbox/inbox.module#InboxPageModule', name: 'InboxPage', segment: 'inbox', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/channels/channels.module#ChannelsPageModule', name: 'ChannelsPage', segment: 'channels', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
                 ]
             })
         ],
