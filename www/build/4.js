@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([4],{
 
 /***/ 261:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -67,8 +67,9 @@ var LoginPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    LoginPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad LoginPage');
+    // Bonne pratique pour faire une fonction réutilisable -> exemple : (click)="navigateToPage('RegisterPage')"
+    LoginPage.prototype.navigateToPage = function (pageName) {
+        this.navCtrl.push(pageName);
     };
     return LoginPage;
 }());
@@ -85,4 +86,4 @@ LoginPage = __decorate([
 /***/ })
 
 });
-//# sourceMappingURL=2.js.map
+//# sourceMappingURL=4.js.map
