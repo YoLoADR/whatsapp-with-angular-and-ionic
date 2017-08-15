@@ -19,8 +19,21 @@ export class LoginPage {
   }
 
   // Bonne pratique pour faire une fonction réutilisable -> exemple : (click)="navigateToPage('RegisterPage')"
+  // (!) Si la personne click sur "login" la page suivantes (InboxPage) a un "back boutton" alors qu'il devrait juste avoir un boutton logout -> pour cela in va créer une fonction
   navigateToPage(pageName: string){
-    this.navCtrl.push(pageName);
+    /*
+      if(pageName === 'InboxPage'){
+        this.navCtrl.setRoot(pageName);
+      }else {
+        this.navCtrl.push(pageName)
+      }
+    */
+    // Si la page est égale à InboxPage (suite à un click sur login) -> on le redirige vers une page qui devient la page Root
+    // Sinon on le redirige vers la page selectionné (par default)
+    pageName === 'InboxPage' ? this.navCtrl.setRoot(pageName) : this.navCtrl.push(pageName);
+
+
+
   }
 
 }
