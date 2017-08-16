@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-
+import { InboxPage } from './../inbox/inbox'
 /**
  * Generated class for the TabsPage page.
  *
@@ -15,12 +15,13 @@ import { IonicPage } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tab1Root: string;
+  tab1Root: any;
   tab2Root: string;
   tab3Root: string;
 
   constructor() {
-    this.tab1Root = 'InboxPage';
+    // (~) Le lazy loading c'est bien pour les pages transverse à la navigation, pour des raisons experiences utilisateur les pages incontournable devrait pas être charger durant la navigation, c'est pour cela qu'on enlève le lazyLoading d' InboxPage car c'est une page d'aterissage
+    this.tab1Root = InboxPage;
     this.tab2Root = 'ChannelsPage';
     this.tab3Root = 'ProfilePage';
   }
