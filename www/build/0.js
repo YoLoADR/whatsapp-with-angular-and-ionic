@@ -45,6 +45,7 @@ TabsPageModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inbox_inbox__ = __webpack_require__(267);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,6 +57,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the TabsPage page.
  *
@@ -64,7 +66,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var TabsPage = (function () {
     function TabsPage() {
-        this.tab1Root = 'InboxPage';
+        // (~) Le lazy loading c'est bien pour les pages transverse à la navigation, pour des raisons experiences utilisateur les pages incontournable devrait pas être charger durant la navigation, c'est pour cela qu'on enlève le lazyLoading d' InboxPage car c'est une page d'aterissage
+        this.tab1Root = __WEBPACK_IMPORTED_MODULE_2__inbox_inbox__["a" /* InboxPage */];
         this.tab2Root = 'ChannelsPage';
         this.tab3Root = 'ProfilePage';
     }
