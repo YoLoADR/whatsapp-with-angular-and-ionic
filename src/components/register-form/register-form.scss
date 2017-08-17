@@ -1,0 +1,12 @@
+register-form {
+  .login-form__block__buttons {
+  float: right;
+  }
+  .login-form__buttons {
+    padding: 10px;
+    //:nth-of-type(X) = selectioné un des éléments avec cette classe grace à un index (X)
+    div button {
+      margin-right: 10px;
+    }
+  }
+}

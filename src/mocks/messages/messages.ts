@@ -1,11 +1,11 @@
-import { Messages } from '../../models/messages/messages';
+import { Messages } from '../../models/messages/messages.interface';
 import { USER_LIST } from '../users/users';
 
 const userList = USER_LIST;
 const messageList: Messages[] = [];
 
 userList.forEach((user) => {
-  messageList.push({user: user, date: new Date()});
+  messageList.push({user: user, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
 });
 
 // const messageList: Messages[] = [

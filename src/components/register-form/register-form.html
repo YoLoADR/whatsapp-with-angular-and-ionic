@@ -1,0 +1,20 @@
+<!-- Generated template for the RegisterFormComponent component -->
+
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-label floating>Email Adress</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  </ion-card-content>
+  <!--Penser à isoler le CSS en créant leur propre class-->
+  <ion-row class="login-form__block__buttons">
+    <div class="login-form__buttons">
+      <button ion-button (click)="register()">Register</button>
+    </div>
+  </ion-row>
+</ion-card>
