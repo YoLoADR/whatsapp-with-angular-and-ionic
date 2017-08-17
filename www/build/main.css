@@ -25199,21 +25199,31 @@ ion-navbar.toolbar {
   }
 }
 
-page-login img {
-  margin: 0 auto;
-  display: block;
-}
-
-page-login ion-card ion-row {
-  padding: 10px;
+.login-form__block__buttons {
   float: right;
 }
 
-page-login ion-card ion-row div button:nth-of-type(1) {
+.login-form__buttons {
+  padding: 10px;
+}
+
+.login-form__buttons div button:nth-of-type(1) {
   margin-right: 10px;
 }
 
-page-register ion-card ion-row {
-  padding: 10px;
+register-form .login-form__block__buttons {
   float: right;
+}
+
+register-form .login-form__buttons {
+  padding: 10px;
+}
+
+register-form .login-form__buttons div button {
+  margin-right: 10px;
+}
+
+page-login img {
+  margin: 0 auto;
+  display: block;
 }

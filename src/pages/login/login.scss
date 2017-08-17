@@ -5,14 +5,4 @@ page-login {
     display: block;
   }
 
-  ion-card ion-row {
-    padding: 10px;
-    float: right;
-
-    //:nth-of-type(X) = selectioné un des éléments avec cette classe grace à un index (X)
-    div button:nth-of-type(1) {
-      margin-right: 10px;
-    }
-  }
-
 }

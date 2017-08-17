@@ -92,6 +92,7 @@ var InboxPage = (function () {
     function InboxPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        // Un tableau de message
         this.messageList = __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__["a" /* MESSAGE_LIST */];
     }
     InboxPage.prototype.ionViewDidLoad = function () {
@@ -102,7 +103,7 @@ var InboxPage = (function () {
 InboxPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-inbox',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/'<!--\n  Generated template for the InboxPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Inbox</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <!--item-left pour mettre l\'item à gauche-->\n      <ion-avatar item-left>\n        <img src="assets/img/avatar.png" alt="avatar">\n      </ion-avatar>\n      <h2>Yohann Atticot</h2>\n      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/,
+        selector: 'page-inbox',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/'<!--\n  Generated template for the InboxPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Inbox</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let message of messageList">\n      <!--item-left pour mettre l\'item à gauche-->\n      <ion-avatar item-left>\n        <img [src]="message.user.avatar" alt="avatar">\n      </ion-avatar>\n      <h2>{{message.user.firstName + \' \' + message.user.lastName}}</h2>\n      <p>{{message.lastMessage}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], InboxPage);
@@ -245,7 +246,7 @@ MyApp = __decorate([
 var userList = __WEBPACK_IMPORTED_MODULE_0__users_users__["a" /* USER_LIST */];
 var messageList = [];
 userList.forEach(function (user) {
-    messageList.push({ user: user, date: new Date() });
+    messageList.push({ user: user, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
 });
 // const messageList: Messages[] = [
 //   { user: userList[0], date: new Date()},
