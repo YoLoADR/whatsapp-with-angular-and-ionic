@@ -578,6 +578,8 @@ var RegisterFormComponent = (function () {
         console.log('Hello RegisterFormComponent Component');
         this.text = 'Hello World';
     }
+    // La déclaration async function définit une fonction asynchrone qui renvoie un objet AsyncFunction.
+    // Créer thread parrallèle
     RegisterFormComponent.prototype.register = function () {
         return __awaiter(this, void 0, void 0, function () {
             var result, err_1;
@@ -592,7 +594,8 @@ var RegisterFormComponent = (function () {
                             message: "Account créée avec succès",
                             duration: 3000
                         }).present();
-                        console.log(result);
+                        // Génial ! attend la résolution d'une promesse
+                        console.log("result await", result);
                         return [3 /*break*/, 3];
                     case 2:
                         err_1 = _a.sent();
@@ -613,9 +616,10 @@ RegisterFormComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'app-register-form',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/register-form/register-form.html"*/'<!-- Generated template for the RegisterFormComponent component -->\n\n<ion-card>\n  <ion-card-content>\n    <ion-item>\n      <ion-label floating>Email Adress</ion-label>\n      <ion-input [(ngModel)]="account.email" type="email"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input [(ngModel)]="account.password" type="password"></ion-input>\n    </ion-item>\n  </ion-card-content>\n  <!--Penser à isoler le CSS en créant leur propre class-->\n  <ion-row class="login-form__block__buttons">\n    <div class="login-form__buttons">\n      <button ion-button (click)="register()">Register</button>\n    </div>\n  </ion-row>\n</ion-card>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/register-form/register-form.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ToastController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _b || Object])
 ], RegisterFormComponent);
 
+var _a, _b;
 //# sourceMappingURL=register-form.js.map
 
 /***/ }),
