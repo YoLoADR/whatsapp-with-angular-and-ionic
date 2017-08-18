@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from "ionic-angular";
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ToastController } from 'ionic-angular';
+
+import { Account } from './../../models/account/account.interface';
 
 /**
  * Generated class for the LoginFormComponent component.
@@ -14,10 +18,32 @@ import { NavController } from "ionic-angular";
 export class LoginFormComponent {
 
   text: string;
+  account = {} as Account;
 
-  constructor(private navCtrl: NavController) {
+  constructor(private toastCrontroller: ToastController, private angularFireAuth: AngularFireAuth, private navCtrl: NavController) {
     console.log('Hello LoginFormComponent Component');
     this.text = 'Hello World';
+  }
+
+  // Je mets async car je vais utiliser une promesss
+  //(+)  async try await catch = Magnifique !
+  async login(){
+    try {
+      const result = await this.angularFireAuth.auth.signInWithEmailAndPassword(this.account.email, this.account.password);
+      console.log("result", result);
+      this.navigateToPage('TabsPage');
+      this.toastCrontroller.create({
+        message: "Vous êtes connecté",
+        duration: 3000
+      }).present();
+    }
+    catch(err){
+      console.error(err);
+      this.toastCrontroller.create({
+        message: err.message,
+        duration: 3000
+      }).present();
+    }
   }
 
     // Bonne pratique pour faire une fonction réutilisable -> exemple : (click)="navigateToPage('RegisterPage')"
