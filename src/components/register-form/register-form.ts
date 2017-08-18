@@ -21,17 +21,23 @@ export class RegisterFormComponent {
   constructor(private toastCrontroller: ToastController,  private angularFireAuth: AngularFireAuth) {
     console.log('Hello RegisterFormComponent Component');
     this.text = 'Hello World';
-  }
 
+  }
+  // La déclaration async function définit une fonction asynchrone qui renvoie un objet AsyncFunction.
+  // Créer thread parrallèle
   async register(){
+    // L'instruction try...catch regroupe des instructions à exécuter et définit une réponse si l'une de ces instructions provoque une exception.
+    // async try await & catch ~= .then(data, err)
     try{
+      // L'opérateur await permet d'attendre la résolution d'une promesse (Promise). Il ne peut être utilisé qu'au sein d'une fonction asynchrone
       const result = await this.angularFireAuth.auth.createUserWithEmailAndPassword(this.account.email, this.account.password);
       this.toastCrontroller.create({
         message: "Account créée avec succès",
         duration: 3000
       }).present();
 
-      console.log(result);
+      // Génial ! attend la résolution d'une promesse
+      console.log("result await", result);
     }
     catch(err){
       console.error(err);
