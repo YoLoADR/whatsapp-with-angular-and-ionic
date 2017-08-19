@@ -9,6 +9,8 @@ import { MyApp } from './app.component';
 import { InboxPage } from "../pages/inbox/inbox";
 
 import { firebaseConfig } from './app.firebase.config';
+import { AuthService } from '../providers/auth/auth.service';
+import { AngularFireAuthModule } from "angularfire2/auth";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { firebaseConfig } from './app.firebase.config';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +31,8 @@ import { firebaseConfig } from './app.firebase.config';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService
   ]
 })
 export class AppModule {}
