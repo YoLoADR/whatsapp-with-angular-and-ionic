@@ -15,5 +15,9 @@
 
 <ion-content padding>
   <img src="assets/img/logo_renault2.png" alt="logo">
-  <app-login-form></app-login-form>
+  <!--
+    On se met à l'écoute du signal (loginStatus)="$event"
+    Avec ce signal l'équipe d'intervention "login()" fera une action
+  -->
+  <app-login-form (loginStatus)="login($event)"></app-login-form>
 </ion-content>
