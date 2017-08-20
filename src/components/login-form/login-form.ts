@@ -28,7 +28,7 @@ export class LoginFormComponent {
   }
 
   async login(){
-      const result = await this.authService.SignIn(this.account)
+      const result = await this.authService.signInWithEmailAndPassword(this.account)
       this.loginStatus.emit(result);
   }
 

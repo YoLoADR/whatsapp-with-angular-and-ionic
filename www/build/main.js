@@ -366,7 +366,7 @@ var AuthService = (function () {
     function AuthService(angularFireAuth) {
         this.angularFireAuth = angularFireAuth;
     }
-    AuthService.prototype.SignIn = function (account) {
+    AuthService.prototype.createUserWithEmailAndPassword = function (account) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, err_1;
             return __generator(this, function (_b) {
@@ -374,7 +374,7 @@ var AuthService = (function () {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
                         _a = {};
-                        return [4 /*yield*/, this.angularFireAuth.auth.signInWithEmailAndPassword(account.email, account.password)];
+                        return [4 /*yield*/, this.angularFireAuth.auth.createUserWithEmailAndPassword(account.email, account.password)];
                     case 1: return [2 /*return*/, (_a.result = _b.sent(),
                             _a)];
                     case 2:
@@ -387,14 +387,34 @@ var AuthService = (function () {
             });
         });
     };
+    AuthService.prototype.signInWithEmailAndPassword = function (account) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, err_2;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 2, , 3]);
+                        _a = {};
+                        return [4 /*yield*/, this.angularFireAuth.auth.signInWithEmailAndPassword(account.email, account.password)];
+                    case 1: return [2 /*return*/, (_a.result = _b.sent(),
+                            _a)];
+                    case 2:
+                        err_2 = _b.sent();
+                        return [2 /*return*/, {
+                                error: err_2
+                            }];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return AuthService;
 }());
 AuthService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["a" /* AngularFireAuth */]])
 ], AuthService);
 
-var _a;
 //# sourceMappingURL=auth.service.js.map
 
 /***/ })
