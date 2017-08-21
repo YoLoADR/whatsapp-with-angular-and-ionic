@@ -24,7 +24,7 @@ export class LoginPage {
     console.log("Equipe d'intervention login() du batiment LoginPage avons bien reçu le signal :", event);
     // event peut être égale à deux reponse différentes => soit {result: S} soit {error: O}
     if(!event.error){
-      this.navCtrl.setRoot('ProfilePage');
+      this.navCtrl.setRoot('EditProfilePage');
       this.toastController.create({
         message: `Vous êtes connecté via ${event.result.email}`,
         duration: 3000
