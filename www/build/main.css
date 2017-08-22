@@ -25199,6 +25199,10 @@ ion-navbar.toolbar {
   }
 }
 
+.global__input-error {
+  color: red;
+}
+
 .login-form__block__buttons {
   float: right;
 }
@@ -25209,6 +25213,19 @@ ion-navbar.toolbar {
 
 .login-form__buttons div button:nth-of-type(1) {
   margin-right: 10px;
+}
+
+.profile-view__image-container {
+  text-align: center;
+  position: relative;
+  background-color: #54D3BF;
+  height: 220px;
+}
+
+.profile-view__image {
+  padding-top: 20px;
+  height: 200px;
+  max-height: 200px;
 }
 
 register-form .login-form__block__buttons {

@@ -15,6 +15,17 @@ export class AuthService {
   constructor(private angularFireAuth: AngularFireAuth) {
   }
 
+  /**
+   * Recupère l'utilisateur authentifier (courant)
+   *
+   * @param {Account} account
+   * @returns user
+   * @memberof AuthService
+   */
+  getAuthenticateUser(){
+    return this.angularFireAuth.authState;
+  }
+
   async createUserWithEmailAndPassword(account: Account){
     try {
       return <LoginResponse> {
