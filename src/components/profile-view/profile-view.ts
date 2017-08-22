@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from "../../providers/data/data.service";
 import { AuthService } from "../../providers/auth/auth.service";
 import { User } from "firebase/app";
@@ -18,10 +18,15 @@ import { LoadingController, Loading } from "ionic-angular";
 export class ProfileViewComponent implements OnInit{
 
   text: string;
-  userProfile: Profile;
-  loader: Loading;
+  public userProfile: Profile;
+  private loader: Loading;
+
+  @Output() existingProfile: EventEmitter<Profile>;
 
   constructor(private dataService: DataService, private authService: AuthService, private loading: LoadingController) {
+
+    this.existingProfile = new EventEmitter<Profile>();
+
     this.loader = this.loading.create({
       content: "Chargement du profile ..."
     });
@@ -34,6 +39,8 @@ export class ProfileViewComponent implements OnInit{
       //Récupère le profile via l'url `/profiles/${user.uid}`
       this.dataService.getProfile(user).subscribe((profile) =>{
         this.userProfile = <Profile>profile.val();
+        //Quand l'utilisateur est bien chargé, on le signal à l'application
+        this.existingProfile.emit(this.userProfile);
         this.loader.dismiss();
       })
     })

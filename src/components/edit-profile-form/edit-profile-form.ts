@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Profile } from "../../models/profile/profile.interface";
 import { AuthService } from "../../providers/auth/auth.service";
 import { Subscription } from 'rxjs';
@@ -14,14 +14,20 @@ import { User } from 'firebase/app';
   selector: 'edit-profile-form',
   templateUrl: 'edit-profile-form.html'
 })
-export class EditProfileFormComponent implements OnDestroy{
+export class EditProfileFormComponent implements OnInit, OnDestroy{
+  ngOnInit(): void {
+    if(!this.profile){
+      this.profile = {} as Profile;
+    }
+  }
   ngOnDestroy(): void {
     this.authentificateUser$.unsubscribe();
   }
   @Output() saveProfileResult: EventEmitter<Boolean>
 
   text: string;
-  profile = {} as Profile;
+  @Input() profile : Profile;
+
   //(!)
   // Convention Style Guide de mettre un $ quand il cela concerne un observable
   private authentificateUser$ : Subscription;
