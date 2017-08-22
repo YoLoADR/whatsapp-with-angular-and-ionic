@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 410:
+/***/ 411:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(421);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(413);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18,26 +18,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
+//import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
-var ProfilePageModule = (function () {
-    function ProfilePageModule() {
+var RegisterPageModule = (function () {
+    function RegisterPageModule() {
     }
-    return ProfilePageModule;
+    return RegisterPageModule;
 }());
-ProfilePageModule = __decorate([
+RegisterPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
+            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
-            __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
         ],
     })
-], ProfilePageModule);
+], RegisterPageModule);
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=register.module.js.map
 
 /***/ }),
 
@@ -405,11 +406,11 @@ EditProfileFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 420:
+/***/ 421:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -424,30 +425,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the ProfilePage page.
+ * Generated class for the RegisterPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var ProfilePage = (function () {
-    function ProfilePage(navCtrl, navParams) {
+var RegisterPage = (function () {
+    function RegisterPage(toastController, navCtrl, navParams) {
+        this.toastController = toastController;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    ProfilePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ProfilePage');
+    RegisterPage.prototype.register = function (event) {
+        console.log("Equipe d'intervention register() du batiment RegisterPage avons bien reçu le signal :", event);
+        // event peut être égale à deux reponse différentes => soit {result: S} soit {error: O}
+        if (!event.error) {
+            this.navCtrl.setRoot('ProfilePage');
+            this.toastController.create({
+                message: "Bienvenu " + event.result.email,
+                duration: 3000
+            }).present();
+        }
+        else if (event.error) {
+            this.toastController.create({
+                message: event.error.message,
+                duration: 3000
+            }).present();
+        }
     };
-    return ProfilePage;
+    return RegisterPage;
 }());
-ProfilePage = __decorate([
+RegisterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-profile',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/profile/profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <app-profile-view></app-profile-view>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/profile/profile.html"*/,
+        selector: 'page-register',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/register/register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-register-form (registerStatus)="register($event)"></app-register-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/register/register.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-], ProfilePage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+], RegisterPage);
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=register.js.map
 
 /***/ }),
 
@@ -506,10 +522,9 @@ ProfileViewComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'app-profile-view',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-view/profile-view.html"*/'<!-- Generated template for the ProfileViewComponent component -->\n<div class="profile-view__image-container">\n  <img class="profile-view__image" src="assets/img/profile-placeholder.png" alt="profile">\n</div>\n\n<div *ngIf="userProfile">\n  <ion-card>\n    <ion-card-content>\n\n      <ion-item>\n        <ion-label floating> Email </ion-label>\n        <ion-input [value]="userProfile.email" [readonly]="true"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating> First Name </ion-label>\n        <ion-input [value]="userProfile.firstName" [readonly]="true"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating> Last Name </ion-label>\n        <ion-input [value]="userProfile.lastName" [readonly]="true"></ion-input>\n      </ion-item>\n\n\n      <ion-item>\n          <ion-label floating> Date of birth </ion-label>\n          <ion-input [value]="userProfile.dateOfBirth" [readonly]="true"></ion-input>\n        </ion-item>\n    </ion-card-content>\n  </ion-card>\n</div>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-view/profile-view.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* LoadingController */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* LoadingController */]])
 ], ProfileViewComponent);
 
-var _a, _b, _c;
 //# sourceMappingURL=profile-view.js.map
 
 /***/ })
