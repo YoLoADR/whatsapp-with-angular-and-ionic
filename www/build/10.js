@@ -363,13 +363,17 @@ var EditProfileFormComponent = (function () {
         var _this = this;
         this.authService = authService;
         this.dataService = dataService;
-        this.profile = {};
         this.saveProfileResult = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         // (?) Je sais pas pourquoi je dois le stocker dans une variable de type Subscription
         this.authentificateUser$ = this.authService.getAuthenticateUser().subscribe(function (user) {
             _this.authentificateUser = user;
         });
     }
+    EditProfileFormComponent.prototype.ngOnInit = function () {
+        if (!this.profile) {
+            this.profile = {};
+        }
+    };
     EditProfileFormComponent.prototype.ngOnDestroy = function () {
         this.authentificateUser$.unsubscribe();
     };
@@ -398,6 +402,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
 ], EditProfileFormComponent.prototype, "saveProfileResult", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], EditProfileFormComponent.prototype, "profile", void 0);
 EditProfileFormComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'edit-profile-form',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/edit-profile-form/edit-profile-form.html"*/'<!-- Generated template for the EditProfileFormComponent component -->\n<ion-card>\n  <ion-card-content>\n    <ion-item>\n      <ion-label floating>First Name</ion-label>\n      <ion-input [(ngModel)]="profile.firstName" type="text"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input [(ngModel)]="profile.lastName" type="test"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Date of birth</ion-label>\n      <ion-datetime displayFormat="DD/MM/YY" [(ngModel)]="profile.dateOfBirth"></ion-datetime>\n    </ion-item>\n  </ion-card-content>\n</ion-card>\n\n<button ion-button color="primary" (click)="saveProfile()">Save</button>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/edit-profile-form/edit-profile-form.html"*/
@@ -437,16 +445,24 @@ var ProfilePage = (function () {
     function ProfilePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.existingProfile = {};
     }
     ProfilePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ProfilePage');
+    };
+    // le component (ProfileViewComponent) qui se charge de récuperer le profile et de l'afficher, le partage avec la page tout entière (ProfilePage)
+    ProfilePage.prototype.getExistingProfile = function (profile) {
+        this.existingProfile = profile;
+    };
+    ProfilePage.prototype.navigateToEditProfilePage = function () {
+        this.navCtrl.push('EditProfilePage', { existingProfile: this.existingProfile });
     };
     return ProfilePage;
 }());
 ProfilePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-profile',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/profile/profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <app-profile-view></app-profile-view>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/profile/profile.html"*/,
+        selector: 'page-profile',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/profile/profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Profile</ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="navigateToEditProfilePage()">Edit</button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <app-profile-view (existingProfile)="getExistingProfile($event)"></app-profile-view>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/profile/profile.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
 ], ProfilePage);
@@ -488,6 +504,7 @@ var ProfileViewComponent = (function () {
         this.dataService = dataService;
         this.authService = authService;
         this.loading = loading;
+        this.existingProfile = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.loader = this.loading.create({
             content: "Chargement du profile ..."
         });
@@ -500,12 +517,18 @@ var ProfileViewComponent = (function () {
             //Récupère le profile via l'url `/profiles/${user.uid}`
             _this.dataService.getProfile(user).subscribe(function (profile) {
                 _this.userProfile = profile.val();
+                //Quand l'utilisateur est bien chargé, on le signal à l'application
+                _this.existingProfile.emit(_this.userProfile);
                 _this.loader.dismiss();
             });
         });
     };
     return ProfileViewComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+], ProfileViewComponent.prototype, "existingProfile", void 0);
 ProfileViewComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'app-profile-view',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-view/profile-view.html"*/'<!-- Generated template for the ProfileViewComponent component -->\n<div class="profile-view__image-container">\n  <img class="profile-view__image" src="assets/img/profile-placeholder.png" alt="profile">\n</div>\n\n<div *ngIf="userProfile">\n  <ion-card>\n    <ion-card-content>\n\n      <ion-item>\n        <ion-label floating> Email </ion-label>\n        <ion-input [value]="userProfile.email" [readonly]="true"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating> First Name </ion-label>\n        <ion-input [value]="userProfile.firstName" [readonly]="true"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating> Last Name </ion-label>\n        <ion-input [value]="userProfile.lastName" [readonly]="true"></ion-input>\n      </ion-item>\n\n\n      <ion-item>\n          <ion-label floating> Date of birth </ion-label>\n          <ion-input [value]="userProfile.dateOfBirth" [readonly]="true"></ion-input>\n        </ion-item>\n    </ion-card-content>\n  </ion-card>\n</div>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-view/profile-view.html"*/
@@ -558,12 +581,11 @@ var ProfileSearchComponent = (function () {
 }());
 ProfileSearchComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'app-profile-search',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/'<!-- Generated template for the ProfileSearchComponent component -->\n<!-- ionChange relance un appel toutes les 200 milliseconde pour que nous puissons envoyer cette data au serveur -->\n<ion-searchbar [(ngModel)]="query" (ionChange)="searchUser(query)"></ion-searchbar>\n\n<ion-list *ngIf="profileList?.length > 0">\n  <ion-item *ngFor="let profile of profileList">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>{{profile.firstName}} {{profile.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/
+        selector: 'app-profile-search',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/'<!-- Generated template for the ProfileSearchComponent component -->\n<!-- ionChange relance un appel toutes les 200 milliseconde pour que nous puissons envoyer cette data au serveur -->\n<ion-searchbar [(ngModel)]="query" (ionChange)="searchUser(query)"></ion-searchbar>\n\n<ion-list *ngIf="profileList?.length > 0 | async">\n  <ion-item *ngFor="let profile of profileList">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>{{profile.firstName}} {{profile.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */]])
 ], ProfileSearchComponent);
 
-var _a;
 //# sourceMappingURL=profile-search.js.map
 
 /***/ })
