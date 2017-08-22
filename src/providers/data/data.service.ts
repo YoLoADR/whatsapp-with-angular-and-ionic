@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { Profile } from "../../models/profile/profile.interface";
 // (1) Interface / Model par default pour un User Firebase
 // C'est la raison pour laquelle on a renomer user par profile lors de ce commit, cela permet de mieux dissocier les deux
@@ -14,7 +14,10 @@ import 'rxjs/add/operator/take';
 @Injectable()
 export class DataService {
 
+  //Un objet ~-> un item
   profileObject: FirebaseObjectObservable<Profile>
+  //Une liste ~-> une liste d'items
+  profileList: FirebaseListObservable<Profile[]>
 
   constructor(private angularFireDatabase: AngularFireDatabase) {}
 
@@ -34,6 +37,17 @@ export class DataService {
       console.error(err);
       return false;
     }
+  }
+
+  searchUser(firstName: string){
+    const query = this.angularFireDatabase.list('profiles',{
+      query : {
+        orderByChild: 'firstName',
+        equalTo: firstName
+      }
+    });
+    //Take fais partie de rxjs ~ subscribe 1
+    return query.take(1)
   }
 }
 

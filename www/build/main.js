@@ -23,31 +23,35 @@ webpackEmptyAsyncContext.id = 144;
 var map = {
 	"../pages/channels/channels.module": [
 		407,
-		5
+		15
 	],
 	"../pages/edit-profile/edit-profile.module": [
 		408,
-		2
+		12
 	],
 	"../pages/inbox/inbox.module": [
 		406,
-		6
+		16
 	],
 	"../pages/login/login.module": [
 		409,
-		1
+		11
 	],
 	"../pages/profile/profile.module": [
 		410,
-		4
+		10
 	],
 	"../pages/register/register.module": [
 		411,
-		0
+		9
+	],
+	"../pages/search-user/search-user.module": [
+		425,
+		14
 	],
 	"../pages/tabs/tabs.module": [
 		412,
-		3
+		13
 	]
 };
 function webpackAsyncContext(req) {
@@ -286,13 +290,24 @@ var DataService = (function () {
             });
         });
     };
+    DataService.prototype.searchUser = function (firstName) {
+        var query = this.angularFireDatabase.list('profiles', {
+            query: {
+                orderByChild: 'firstName',
+                equalTo: firstName
+            }
+        });
+        //Take fais partie de rxjs ~ subscribe 1
+        return query.take(1);
+    };
     return DataService;
 }());
 DataService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
 ], DataService);
 
+var _a;
 // (1) Interface / Model par default pour un User Firebase
 /*
 {
@@ -339,15 +354,15 @@ var InboxPage = (function () {
         // Un tableau de message
         this.messageList = __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__["a" /* MESSAGE_LIST */];
     }
-    InboxPage.prototype.ionViewDidLoad = function () {
-        console.log("MESSAGE_LIST", __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__["a" /* MESSAGE_LIST */]);
+    InboxPage.prototype.navigateToSearchUserPage = function () {
+        this.navCtrl.push('SearchUserPage');
     };
     return InboxPage;
 }());
 InboxPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-inbox',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/'<!--\n  Generated template for the InboxPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Inbox</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let message of messageList">\n      <!--item-left pour mettre l\'item à gauche-->\n      <ion-avatar item-left>\n        <img [src]="message.profile.avatar" alt="avatar">\n      </ion-avatar>\n      <h2>{{message.profile.firstName + \' \' + message.profile.lastName}}</h2>\n      <p>{{message.lastMessage}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/,
+        selector: 'page-inbox',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/'<!--\n  Generated template for the InboxPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Inbox</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="navigateToSearchUserPage()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let message of messageList">\n      <!--item-left pour mettre l\'item à gauche-->\n      <ion-avatar item-left>\n        <img [src]="message.profile.avatar" alt="avatar">\n      </ion-avatar>\n      <h2>{{message.profile.firstName + \' \' + message.profile.lastName}}</h2>\n      <p>{{message.lastMessage}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
 ], InboxPage);
@@ -427,11 +442,12 @@ AppModule = __decorate([
                 links: [
                     { loadChildren: '../pages/inbox/inbox.module#InboxPageModule', name: 'InboxPage', segment: 'inbox', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/channels/channels.module#ChannelsPageModule', name: 'ChannelsPage', segment: 'channels', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/edit-profile/edit-profile.module#EditProfilePageModule', name: 'EditProfilePage', segment: 'edit-profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/edit-profile/edit-profile.module#EditProfilePageModule', name: 'EditProfilePage', segment: 'edit-profile', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/search-user/search-user.module#SearchUserPageModule', name: 'SearchUserPage', segment: 'search-user', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_9__app_firebase_config__["a" /* firebaseConfig */]),
