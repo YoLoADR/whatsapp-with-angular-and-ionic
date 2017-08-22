@@ -4,6 +4,7 @@ import { Profile } from "../../models/profile/profile.interface";
 // (1) Interface / Model par default pour un User Firebase
 // C'est la raison pour laquelle on a renomer user par profile lors de ce commit, cela permet de mieux dissocier les deux
 import { User } from 'firebase/app';
+import 'rxjs/add/operator/take';
 /*
   Generated class for the DataProvider provider.
 
@@ -17,14 +18,12 @@ export class DataService {
 
   constructor(private angularFireDatabase: AngularFireDatabase) {}
 
-  /**
-   *
-   *
-   * @param {User} user
-   * @param {Profile} profile
-   * @returns
-   * @memberof DataService
-   */
+  getProfile(user: User){
+    this.profileObject = this.angularFireDatabase.object(`/profiles/${user.uid}`, { preserveSnapshot: true});
+    //Take fais partie de rxjs ~ subscribe 1
+    return this.profileObject.take(1);
+  }
+
   async saveProfile(user: User, profile: Profile){
     this.profileObject = this.angularFireDatabase.object(`/profiles/${user.uid}`);
     try{
@@ -36,7 +35,6 @@ export class DataService {
       return false;
     }
   }
-
 }
 
 

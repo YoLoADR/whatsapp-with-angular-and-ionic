@@ -18,9 +18,9 @@
     <ion-item *ngFor="let message of messageList">
       <!--item-left pour mettre l'item à gauche-->
       <ion-avatar item-left>
-        <img [src]="message.user.avatar" alt="avatar">
+        <img [src]="message.profile.avatar" alt="avatar">
       </ion-avatar>
-      <h2>{{message.user.firstName + ' ' + message.user.lastName}}</h2>
+      <h2>{{message.profile.firstName + ' ' + message.profile.lastName}}</h2>
       <p>{{message.lastMessage}}</p>
     </ion-item>
   </ion-list>

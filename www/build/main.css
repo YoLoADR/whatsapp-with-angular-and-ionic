@@ -25199,6 +25199,10 @@ ion-navbar.toolbar {
   }
 }
 
+.global__input-error {
+  color: red;
+}
+
 .login-form__block__buttons {
   float: right;
 }
