@@ -2,7 +2,7 @@
 <!-- ionChange relance un appel toutes les 200 milliseconde pour que nous puissons envoyer cette data au serveur -->
 <ion-searchbar [(ngModel)]="query" (ionChange)="searchUser(query)"></ion-searchbar>
 
-<ion-list *ngIf="profileList?.length > 0 | async">
+<ion-list *ngIf="profileList?.length > 0">
   <ion-item *ngFor="let profile of profileList">
     <ion-avatar item-left>
       <img src="assets/img/avatar.png" alt="Avatar">

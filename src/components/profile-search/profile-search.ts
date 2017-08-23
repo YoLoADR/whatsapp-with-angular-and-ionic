@@ -24,10 +24,15 @@ export class ProfileSearchComponent {
   }
 
   searchUser(query: string){
-    this.dataService.searchUser(query).subscribe(profiles =>{
-      this.profileList = profiles
-      console.log("profileList", this.profileList);
-    });
+    // Pour parser/unifier la requête utilisateur - .trim() permet de retirer les blancs en début et fin de chaîne.
+    const trimmedQuery = query.trim();
+
+    if(trimmedQuery === query){
+      this.dataService.searchUser(query).subscribe(profiles =>{
+        this.profileList = profiles
+        console.log("profileList", this.profileList);
+      });
+    }
   }
 
 }
