@@ -1,15 +1,15 @@
 webpackJsonp([4],{
 
-/***/ 408:
+/***/ 409:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditProfilePageModule", function() { return EditProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_profile__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(415);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,45 +20,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EditProfilePageModule = (function () {
-    function EditProfilePageModule() {
+var LoginPageModule = (function () {
+    function LoginPageModule() {
     }
-    return EditProfilePageModule;
+    return LoginPageModule;
 }());
-EditProfilePageModule = __decorate([
+LoginPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__edit_profile__["a" /* EditProfilePage */],
+            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_profile__["a" /* EditProfilePage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
             __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
         ],
     })
-], EditProfilePageModule);
+], LoginPageModule);
 
-//# sourceMappingURL=edit-profile.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 414:
+/***/ 415:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_form_login_form__ = __webpack_require__(415);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_form_register_form__ = __webpack_require__(416);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_profile_form_edit_profile_form__ = __webpack_require__(417);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_form_login_form__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_form_register_form__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_profile_form_edit_profile_form__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__ = __webpack_require__(422);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -78,7 +82,9 @@ ComponentsModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__register_form_register_form__["a" /* RegisterFormComponent */],
             __WEBPACK_IMPORTED_MODULE_4__edit_profile_form_edit_profile_form__["a" /* EditProfileFormComponent */],
             __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__["a" /* ProfileViewComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__["a" /* SendMessageBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */]
@@ -88,7 +94,9 @@ ComponentsModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__register_form_register_form__["a" /* RegisterFormComponent */],
             __WEBPACK_IMPORTED_MODULE_4__edit_profile_form_edit_profile_form__["a" /* EditProfileFormComponent */],
             __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__["a" /* ProfileViewComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__["a" /* SendMessageBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */]
         ]
     })
 ], ComponentsModule);
@@ -97,7 +105,7 @@ ComponentsModule = __decorate([
 
 /***/ }),
 
-/***/ 415:
+/***/ 416:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -200,7 +208,7 @@ LoginFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 416:
+/***/ 417:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -297,7 +305,7 @@ RegisterFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 417:
+/***/ 418:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -417,7 +425,7 @@ EditProfileFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 418:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -486,7 +494,7 @@ ProfileViewComponent = __decorate([
 
 /***/ }),
 
-/***/ 419:
+/***/ 420:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -513,8 +521,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ProfileSearchComponent = (function () {
     function ProfileSearchComponent(dataService) {
         this.dataService = dataService;
-        console.log('Hello ProfileSearchComponent Component');
-        this.text = 'Hello ProfileSearchComponent';
+        this.selectedProfile = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
     }
     ProfileSearchComponent.prototype.searchUser = function (query) {
         var _this = this;
@@ -527,11 +534,18 @@ var ProfileSearchComponent = (function () {
             });
         }
     };
+    ProfileSearchComponent.prototype.selectProfile = function (profile) {
+        this.selectedProfile.emit(profile);
+    };
     return ProfileSearchComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+], ProfileSearchComponent.prototype, "selectedProfile", void 0);
 ProfileSearchComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'app-profile-search',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/'<!-- Generated template for the ProfileSearchComponent component -->\n<!-- ionChange relance un appel toutes les 200 milliseconde pour que nous puissons envoyer cette data au serveur -->\n<ion-searchbar [(ngModel)]="query" (ionChange)="searchUser(query)"></ion-searchbar>\n\n<ion-list *ngIf="profileList?.length > 0">\n  <ion-item *ngFor="let profile of profileList">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>{{profile.firstName}} {{profile.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/
+        selector: 'app-profile-search',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/'<!-- Generated template for the ProfileSearchComponent component -->\n<!-- ionChange relance un appel toutes les 200 milliseconde pour que nous puissons envoyer cette data au serveur -->\n<ion-searchbar [(ngModel)]="query" (ionChange)="searchUser(query)"></ion-searchbar>\n\n<ion-list *ngIf="profileList?.length > 0">\n  <ion-item *ngFor="let profile of profileList" (click)="selectProfile(profile)">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>{{profile.firstName}} {{profile.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-search/profile-search.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */]])
 ], ProfileSearchComponent);
@@ -544,9 +558,98 @@ ProfileSearchComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SendMessageBoxComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+ * Generated class for the SendMessageBoxComponent component.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ * for more info on Angular Components.
+ */
+var SendMessageBoxComponent = (function () {
+    function SendMessageBoxComponent() {
+        console.log('Hello SendMessageBoxComponent Component');
+        this.text = 'Hello World';
+    }
+    return SendMessageBoxComponent;
+}());
+SendMessageBoxComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'app-send-message-box',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/send-message-box/send-message-box.html"*/'<!-- Generated template for the SendMessageBoxComponent component -->\n\n<ion-grid>\n  <ion-row>\n    <ion-col col-9>\n      <ion-textarea placeholder="Enter message ..."></ion-textarea>\n    </ion-col>\n    <ion-col col-3>\n      <button clear ion-button>Submit</button>\n    </ion-col>\n  </ion-row>\n</ion-grid>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/send-message-box/send-message-box.html"*/
+    }),
+    __metadata("design:paramtypes", [])
+], SendMessageBoxComponent);
+
+//# sourceMappingURL=send-message-box.js.map
+
+/***/ }),
+
+/***/ 422:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatMessageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+ * Generated class for the ChatMessageComponent component.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ * for more info on Angular Components.
+ */
+var ChatMessageComponent = (function () {
+    function ChatMessageComponent() {
+        console.log('Hello ChatMessageComponent Component');
+        this.text = 'Hello World';
+    }
+    return ChatMessageComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], ChatMessageComponent.prototype, "chatMessage", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Number)
+], ChatMessageComponent.prototype, "chatIndex", void 0);
+ChatMessageComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'app-chat-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/'<!-- Generated template for the ChatMessageComponent component -->\n<ion-item *ngIf="chatIndex % 2 === 0; else right">\n  <ion-avatar item-left>\n    <img src="assets/img/avatar.png" alt="Avatar">\n  </ion-avatar>\n  <h2>Yohann Atticot</h2>\n  <h3>Test</h3>\n</ion-item>\n\n<ng-template #right>\n  <ion-item class="chat-message__message-right">\n    <ion-avatar item-right>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>Laura Atticot</h2>\n    <p>Test</p>\n  </ion-item>\n</ng-template>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/
+    }),
+    __metadata("design:paramtypes", [])
+], ChatMessageComponent);
+
+//# sourceMappingURL=chat-message.js.map
+
+/***/ }),
+
+/***/ 425:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__ = __webpack_require__(270);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -558,34 +661,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Generated class for the EditProfilePage page.
+ * Generated class for the LoginPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var EditProfilePage = (function () {
-    function EditProfilePage(navCtrl, navParams) {
+var LoginPage = (function () {
+    function LoginPage(dataService, navCtrl, toastController) {
+        this.dataService = dataService;
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.profile = {};
-        this.profile = this.navParams.get('existingProfile');
+        this.toastController = toastController;
     }
-    EditProfilePage.prototype.saveProfileResult = function (event) {
-        // Si l'évenement est true
-        event ? this.navCtrl.setRoot('TabsPage') : console.log('Non authentifier ou sauvegarder');
+    LoginPage.prototype.login = function (event) {
+        var _this = this;
+        console.log("Equipe d'intervention login() du batiment LoginPage avons bien reçu le signal :", event);
+        // event peut être égale à deux reponse différentes => soit {result: S} soit {error: O}
+        if (!event.error) {
+            this.toastController.create({
+                message: "Vous \u00EAtes connect\u00E9 via " + event.result.email,
+                duration: 3000
+            }).present();
+            /**
+             * Au debut l'utilisateur se connecte avec son mail et son mots de passe - rien de plus, dans ce cas la on lui demande d'éditer son profile (nom, prenom ...)
+             * Si le profile existe deja on le redirige vers TabsPage, sinon on lui propose d'éditer son profil (pour avoir plus d'information)
+             */
+            this.dataService.getProfile(event.result).subscribe(function (profile) {
+                console.log("profile", profile);
+                profile.val() ? _this.navCtrl.setRoot('TabsPage') : _this.navCtrl.setRoot('EditProfilePage');
+            });
+        }
+        else if (event.error) {
+            this.toastController.create({
+                message: event.error.message,
+                duration: 3000
+            }).present();
+        }
     };
-    return EditProfilePage;
+    return LoginPage;
 }());
-EditProfilePage = __decorate([
+LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-edit-profile',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/edit-profile/edit-profile.html"*/'<!--\n  Generated template for the EditProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>EditProfilePage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <edit-profile-form [profile]="profile" (saveProfileResult)="saveProfileResult($event)"></edit-profile-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/edit-profile/edit-profile.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <img src="assets/img/logo_renault2.png" alt="logo">\n  <!--\n    On se met à l\'écoute du signal (loginStatus)="$event"\n    Avec ce signal l\'équipe d\'intervention "login()" fera une action\n  -->\n  <app-login-form (loginStatus)="login($event)"></app-login-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/login/login.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-], EditProfilePage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+], LoginPage);
 
-//# sourceMappingURL=edit-profile.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

@@ -5,6 +5,8 @@ import { RegisterFormComponent } from './register-form/register-form';
 import { EditProfileFormComponent } from './edit-profile-form/edit-profile-form';
 import { ProfileViewComponent } from './profile-view/profile-view';
 import { ProfileSearchComponent } from './profile-search/profile-search';
+import { SendMessageBoxComponent } from './send-message-box/send-message-box';
+import { ChatMessageComponent } from './chat-message/chat-message';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { ProfileSearchComponent } from './profile-search/profile-search';
     RegisterFormComponent,
     EditProfileFormComponent,
     ProfileViewComponent,
-    ProfileSearchComponent
+    ProfileSearchComponent,
+    SendMessageBoxComponent,
+    ChatMessageComponent
   ],
   imports: [
     IonicPageModule
@@ -22,7 +26,9 @@ import { ProfileSearchComponent } from './profile-search/profile-search';
     RegisterFormComponent,
     EditProfileFormComponent,
     ProfileViewComponent,
-    ProfileSearchComponent
+    ProfileSearchComponent,
+    SendMessageBoxComponent,
+    ChatMessageComponent
   ]
 })
 export class ComponentsModule {}

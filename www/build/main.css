@@ -25203,6 +25203,10 @@ ion-navbar.toolbar {
   color: red;
 }
 
+chat-message .chat-message__message-right h2, chat-message .chat-message__message-right p {
+  text-align: right;
+}
+
 .login-form__block__buttons {
   float: right;
 }
