@@ -76,7 +76,7 @@ var TabsPage = (function () {
 TabsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tabs',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle=\'Messages\' tabIcon="mail"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle=\'Channels\' tabIcon="contact"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle=\'Profile\' tabIcon="person"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/tabs/tabs.html"*/,
+        selector: 'page-tabs',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [tabsHideOnSubPages]="true" [root]="tab1Root" tabTitle=\'Messages\' tabIcon="mail"></ion-tab>\n  <ion-tab [tabsHideOnSubPages]="true" [root]="tab2Root" tabTitle=\'Channels\' tabIcon="contact"></ion-tab>\n  <ion-tab [tabsHideOnSubPages]="true" [root]="tab3Root" tabTitle=\'Profile\' tabIcon="person"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/tabs/tabs.html"*/,
     }),
     __metadata("design:paramtypes", [])
 ], TabsPage);
