@@ -1,14 +1,14 @@
-webpackJsonp([3],{
+webpackJsonp([11],{
 
-/***/ 409:
+/***/ 411:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(414);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18,26 +18,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
+//import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var RegisterPageModule = (function () {
+    function RegisterPageModule() {
     }
-    return LoginPageModule;
+    return RegisterPageModule;
 }());
-LoginPageModule = __decorate([
+RegisterPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
-            __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
         ],
     })
-], LoginPageModule);
+], RegisterPageModule);
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=register.module.js.map
 
 /***/ }),
 
@@ -546,14 +547,13 @@ ProfileSearchComponent = __decorate([
 
 /***/ }),
 
-/***/ 422:
+/***/ 424:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__ = __webpack_require__(270);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -565,36 +565,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the RegisterPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var LoginPage = (function () {
-    function LoginPage(dataService, navCtrl, toastController) {
-        this.dataService = dataService;
-        this.navCtrl = navCtrl;
+var RegisterPage = (function () {
+    function RegisterPage(toastController, navCtrl, navParams) {
         this.toastController = toastController;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
     }
-    LoginPage.prototype.login = function (event) {
-        var _this = this;
-        console.log("Equipe d'intervention login() du batiment LoginPage avons bien reçu le signal :", event);
+    RegisterPage.prototype.register = function (event) {
+        console.log("Equipe d'intervention register() du batiment RegisterPage avons bien reçu le signal :", event);
         // event peut être égale à deux reponse différentes => soit {result: S} soit {error: O}
         if (!event.error) {
+            this.navCtrl.setRoot('ProfilePage');
             this.toastController.create({
-                message: "Vous \u00EAtes connect\u00E9 via " + event.result.email,
+                message: "Bienvenu " + event.result.email,
                 duration: 3000
             }).present();
-            /**
-             * Au debut l'utilisateur se connecte avec son mail et son mots de passe - rien de plus, dans ce cas la on lui demande d'éditer son profile (nom, prenom ...)
-             * Si le profile existe deja on le redirige vers TabsPage, sinon on lui propose d'éditer son profil (pour avoir plus d'information)
-             */
-            this.dataService.getProfile(event.result).subscribe(function (profile) {
-                console.log("profile", profile);
-                profile.val() ? _this.navCtrl.setRoot('TabsPage') : _this.navCtrl.setRoot('EditProfilePage');
-            });
         }
         else if (event.error) {
             this.toastController.create({
@@ -603,20 +594,19 @@ var LoginPage = (function () {
             }).present();
         }
     };
-    return LoginPage;
+    return RegisterPage;
 }());
-LoginPage = __decorate([
+RegisterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <img src="assets/img/logo_renault2.png" alt="logo">\n  <!--\n    On se met à l\'écoute du signal (loginStatus)="$event"\n    Avec ce signal l\'équipe d\'intervention "login()" fera une action\n  -->\n  <app-login-form (loginStatus)="login($event)"></app-login-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/login/login.html"*/,
+        selector: 'page-register',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/register/register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-register-form (registerStatus)="register($event)"></app-register-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/register/register.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
-], LoginPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+], RegisterPage);
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=register.js.map
 
 /***/ })
 
 });
-//# sourceMappingURL=3.js.map
+//# sourceMappingURL=11.js.map

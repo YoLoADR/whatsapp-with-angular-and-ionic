@@ -149,35 +149,39 @@ webpackEmptyAsyncContext.id = 145;
 var map = {
 	"../pages/channels/channels.module": [
 		407,
-		6
+		17
 	],
 	"../pages/edit-profile/edit-profile.module": [
 		408,
-		4
+		14
 	],
 	"../pages/inbox/inbox.module": [
 		406,
-		7
+		18
 	],
 	"../pages/login/login.module": [
 		409,
-		3
+		13
+	],
+	"../pages/message/message.module": [
+		427,
+		16
 	],
 	"../pages/profile/profile.module": [
 		410,
-		2
+		12
 	],
 	"../pages/register/register.module": [
 		411,
-		1
+		11
 	],
 	"../pages/search-user/search-user.module": [
 		412,
-		0
+		10
 	],
 	"../pages/tabs/tabs.module": [
 		413,
-		5
+		15
 	]
 };
 function webpackAsyncContext(req) {
@@ -446,7 +450,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search-user/search-user.module#SearchUserPageModule', name: 'SearchUserPage', segment: 'search-user', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/message/message.module#MessagePageModule', name: 'MessagePage', segment: 'message', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_9__app_firebase_config__["a" /* firebaseConfig */]),
