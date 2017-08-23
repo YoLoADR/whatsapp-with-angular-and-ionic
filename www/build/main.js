@@ -1,4 +1,4 @@
-webpackJsonp([8],{
+webpackJsonp([9],{
 
 /***/ 138:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -149,39 +149,39 @@ webpackEmptyAsyncContext.id = 145;
 var map = {
 	"../pages/channels/channels.module": [
 		407,
-		17
+		7
 	],
 	"../pages/edit-profile/edit-profile.module": [
 		408,
-		14
+		5
 	],
 	"../pages/inbox/inbox.module": [
 		406,
-		18
+		8
 	],
 	"../pages/login/login.module": [
 		409,
-		13
+		4
 	],
 	"../pages/message/message.module": [
-		427,
-		16
+		410,
+		3
 	],
 	"../pages/profile/profile.module": [
-		410,
-		12
+		411,
+		2
 	],
 	"../pages/register/register.module": [
-		411,
-		11
+		412,
+		1
 	],
 	"../pages/search-user/search-user.module": [
-		412,
-		10
+		413,
+		0
 	],
 	"../pages/tabs/tabs.module": [
-		413,
-		15
+		414,
+		6
 	]
 };
 function webpackAsyncContext(req) {
@@ -447,11 +447,11 @@ AppModule = __decorate([
                     { loadChildren: '../pages/channels/channels.module#ChannelsPageModule', name: 'ChannelsPage', segment: 'channels', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/edit-profile/edit-profile.module#EditProfilePageModule', name: 'EditProfilePage', segment: 'edit-profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/message/message.module#MessagePageModule', name: 'MessagePage', segment: 'message', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/search-user/search-user.module#SearchUserPageModule', name: 'SearchUserPage', segment: 'search-user', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/message/message.module#MessagePageModule', name: 'MessagePage', segment: 'message', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_9__app_firebase_config__["a" /* firebaseConfig */]),
@@ -487,6 +487,7 @@ AppModule = __decorate([
 var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
 var messageList = [];
 profileList.forEach(function (profile) {
+    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
     messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
 });
 // const messageList: Messages[] = [
@@ -548,7 +549,7 @@ var MyApp = (function () {
         this.authService.getAuthenticateUser().subscribe(function (auth) {
             return !auth ?
                 _this.rootPage = 'LoginPage' :
-                _this.rootPage = 'TabsPage';
+                _this.rootPage = 'MessagePage';
         });
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
