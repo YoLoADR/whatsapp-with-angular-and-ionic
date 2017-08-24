@@ -115,6 +115,9 @@ var AuthService = (function () {
             });
         });
     };
+    AuthService.prototype.signOut = function () {
+        this.angularFireAuth.auth.signOut();
+    };
     return AuthService;
 }());
 AuthService = __decorate([
@@ -331,7 +334,7 @@ DataService = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InboxPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__ = __webpack_require__(272);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -378,9 +381,33 @@ InboxPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MESSAGE_LIST; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_profile__ = __webpack_require__(313);
+
+var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
+var messageList = [];
+profileList.forEach(function (profile) {
+    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
+    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
+});
+// const messageList: Messages[] = [
+//   { user: userList[0], date: new Date()},
+//   { user: userList[1], date: new Date()},
+//   { user: userList[2], date: new Date()},
+//   { user: userList[3], date: new Date()}
+// ];
+var MESSAGE_LIST = messageList;
+//# sourceMappingURL=messages.js.map
+
+/***/ }),
+
+/***/ 273:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(290);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -388,7 +415,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 289:
+/***/ 290:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -477,30 +504,6 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 312:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MESSAGE_LIST; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_profile__ = __webpack_require__(313);
-
-var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
-var messageList = [];
-profileList.forEach(function (profile) {
-    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-});
-// const messageList: Messages[] = [
-//   { user: userList[0], date: new Date()},
-//   { user: userList[1], date: new Date()},
-//   { user: userList[2], date: new Date()},
-//   { user: userList[3], date: new Date()}
-// ];
-var MESSAGE_LIST = messageList;
-//# sourceMappingURL=messages.js.map
-
-/***/ }),
-
 /***/ 313:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -543,15 +546,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen, authService) {
+        //Si l'utilisateur est deja connecter la home page n'est plus login mais inbox (TabsPage car elle redirige vers inboxPage)
+        // this.authService.getAuthenticateUser().subscribe(auth =>
+        //   !auth ?
+        //   this.rootPage = 'LoginPage' :
+        //   this.rootPage = 'MessagePage'
+        // );
         var _this = this;
         this.authService = authService;
-        //Si l'utilisateur est deja connecter la home page n'est plus login mais inbox (TabsPage car elle redirige vers inboxPage)
-        this.authService.getAuthenticateUser().subscribe(function (auth) {
-            return !auth ?
-                _this.rootPage = 'LoginPage' :
-                _this.rootPage = 'MessagePage';
-        });
         platform.ready().then(function () {
+            _this.rootPage = 'LoginPage';
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
@@ -563,9 +567,10 @@ var MyApp = (function () {
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth_service__["a" /* AuthService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth_service__["a" /* AuthService */]) === "function" && _d || Object])
 ], MyApp);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -587,5 +592,5 @@ var firebaseConfig = {
 
 /***/ })
 
-},[272]);
+},[273]);
 //# sourceMappingURL=main.js.map
