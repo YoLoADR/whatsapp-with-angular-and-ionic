@@ -19,7 +19,7 @@ import { Observable } from "rxjs/Observable";
 })
 export class ChannelsPage {
 
-  channelList: Observable<Channels[]>;
+  channelList: FirebaseListObservable<Channels[]>;
 
   constructor(
     private chatService: ChatService,
@@ -56,6 +56,10 @@ export class ChannelsPage {
 
   getChannels(){
     this.channelList = this.chatService.getChannelListRef();
+  }
+
+  selectChannel(channel: Channels){
+    this.navCtrl.push('ChannelChatPage', { channel })
   }
 
 }
