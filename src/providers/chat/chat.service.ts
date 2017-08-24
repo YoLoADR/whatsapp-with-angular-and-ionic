@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { Channels } from "../../models/channels/channels.interface";
 
 /*
   Generated class for the ChatProvider provider.
@@ -15,8 +15,8 @@ export class ChatService {
   constructor(public angularFireDatabase: AngularFireDatabase) {
   }
 
-  addChannel(channelName: string){
-    // Dans une nouvelle base de donnée quand nome "channel-names" on ajoute grace à cette fonction des "clés : valeurs"
+
+  // Dans une nouvelle base de donnée quand nome "channel-names" on ajoute grace à cette fonction des "clés : valeurs"
     /*
     channel-names :
       -Kewjjwai221 :
@@ -24,7 +24,12 @@ export class ChatService {
       -Kewjjwai22321 :
         name: 'Angular'
     */
-    this.angularFireDatabase.list('/channel-names/').push({ name: channelName });
+  addChannel(channelName: string){
+    this.angularFireDatabase.list('channel-names').push({ name: channelName });
+  }
+
+  getChannelListRef(): FirebaseListObservable<Channels>{
+    return this.angularFireDatabase.list('channel-names');
   }
 
 }

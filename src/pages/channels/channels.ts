@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ChatService } from "../../providers/chat/chat.service";
+import { Channels } from "../../models/channels/channels.interface";
+import { FirebaseListObservable } from "angularfire2/database";
+import { Observable } from "rxjs/Observable";
 
 /**
  * Generated class for the ChannelsPage page.
@@ -16,6 +19,8 @@ import { ChatService } from "../../providers/chat/chat.service";
 })
 export class ChannelsPage {
 
+  channelList: Observable<Channels[]>;
+
   constructor(
     private chatService: ChatService,
     private alertController: AlertController,
@@ -23,8 +28,8 @@ export class ChannelsPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChannelsPage');
+  ionViewWillLoad() {
+   this.getChannels();
   }
 
   // handler permet de créer une fonction - data.channelName => name: 'channelName' (de l'input)
@@ -47,6 +52,10 @@ export class ChannelsPage {
         }
       ]
     }).present();
+  }
+
+  getChannels(){
+    this.channelList = this.chatService.getChannelListRef();
   }
 
 }

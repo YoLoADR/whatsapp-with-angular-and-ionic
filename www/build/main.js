@@ -321,24 +321,28 @@ var ChatService = (function () {
     function ChatService(angularFireDatabase) {
         this.angularFireDatabase = angularFireDatabase;
     }
+    // Dans une nouvelle base de donnée quand nome "channel-names" on ajoute grace à cette fonction des "clés : valeurs"
+    /*
+    channel-names :
+      -Kewjjwai221 :
+        name: 'Ionic'
+      -Kewjjwai22321 :
+        name: 'Angular'
+    */
     ChatService.prototype.addChannel = function (channelName) {
-        // Dans une nouvelle base de donnée quand nome "channel-names" on ajoute grace à cette fonction des "clés : valeurs"
-        /*
-        channel-names :
-          -Kewjjwai221 :
-            name: 'Ionic'
-          -Kewjjwai22321 :
-            name: 'Angular'
-        */
-        this.angularFireDatabase.list('/channel-names/').push({ name: channelName });
+        this.angularFireDatabase.list('channel-names').push({ name: channelName });
+    };
+    ChatService.prototype.getChannelListRef = function () {
+        return this.angularFireDatabase.list('channel-names');
     };
     return ChatService;
 }());
 ChatService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
 ], ChatService);
 
+var _a;
 //# sourceMappingURL=chat.service.js.map
 
 /***/ }),
