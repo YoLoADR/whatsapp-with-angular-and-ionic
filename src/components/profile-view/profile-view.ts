@@ -34,16 +34,26 @@ export class ProfileViewComponent implements OnInit{
 
   ngOnInit(): void{
     this.loader.present();
-    //Récupère l'utilisateur qui s'est connecté via son mail
-    this.authService.getAuthenticateUser().subscribe((user: User) => {
-      //Récupère le profile via l'url `/profiles/${user.uid}`
-      this.dataService.getProfile(user).subscribe((profile) =>{
-        this.userProfile = <Profile>profile.val();
-        //Quand l'utilisateur est bien chargé, on le signal à l'application
-        this.existingProfile.emit(this.userProfile);
-        this.loader.dismiss();
-      })
+    this.dataService.getAuthenticatedUserProfile().subscribe(profile =>{
+      this.userProfile = profile;
+      //Quand l'utilisateur est bien chargé, on le signal à l'application
+      this.existingProfile.emit(this.userProfile);
+      this.loader.dismiss();
     })
   }
 
 }
+
+/* Ancienne version
+
+ //Récupère l'utilisateur qui s'est connecté via son mail
+ this.authService.getAuthenticateUser().subscribe((user: User) => {
+  //Récupère le profile via l'url `/profiles/${user.uid}`
+  this.dataService.getProfile(user).subscribe((profile) =>{
+    this.userProfile = <Profile>profile.val();
+    //Quand l'utilisateur est bien chargé, on le signal à l'application
+    this.existingProfile.emit(this.userProfile);
+    this.loader.dismiss();
+  })
+})
+*/
