@@ -466,30 +466,40 @@ var ProfileViewComponent = (function () {
     ProfileViewComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loader.present();
-        //Récupère l'utilisateur qui s'est connecté via son mail
-        this.authService.getAuthenticateUser().subscribe(function (user) {
-            //Récupère le profile via l'url `/profiles/${user.uid}`
-            _this.dataService.getProfile(user).subscribe(function (profile) {
-                _this.userProfile = profile.val();
-                //Quand l'utilisateur est bien chargé, on le signal à l'application
-                _this.existingProfile.emit(_this.userProfile);
-                _this.loader.dismiss();
-            });
+        this.dataService.getAuthenticatedUserProfile().subscribe(function (profile) {
+            _this.userProfile = profile;
+            //Quand l'utilisateur est bien chargé, on le signal à l'application
+            _this.existingProfile.emit(_this.userProfile);
+            _this.loader.dismiss();
         });
     };
     return ProfileViewComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]) === "function" && _a || Object)
 ], ProfileViewComponent.prototype, "existingProfile", void 0);
 ProfileViewComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'app-profile-view',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-view/profile-view.html"*/'<!-- Generated template for the ProfileViewComponent component -->\n<div class="profile-view__image-container">\n  <img class="profile-view__image" src="assets/img/profile-placeholder.png" alt="profile">\n</div>\n\n<div *ngIf="userProfile">\n  <ion-card>\n    <ion-card-content>\n\n      <ion-item>\n        <ion-label floating> Email </ion-label>\n        <ion-input [value]="userProfile.email" [readonly]="true"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating> First Name </ion-label>\n        <ion-input [value]="userProfile.firstName" [readonly]="true"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating> Last Name </ion-label>\n        <ion-input [value]="userProfile.lastName" [readonly]="true"></ion-input>\n      </ion-item>\n\n\n      <ion-item>\n          <ion-label floating> Date of birth </ion-label>\n          <ion-input [value]="userProfile.dateOfBirth" [readonly]="true"></ion-input>\n        </ion-item>\n    </ion-card-content>\n  </ion-card>\n</div>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/profile-view/profile-view.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* LoadingController */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object])
 ], ProfileViewComponent);
 
+var _a, _b, _c, _d;
+/* Ancienne version
+
+ //Récupère l'utilisateur qui s'est connecté via son mail
+ this.authService.getAuthenticateUser().subscribe((user: User) => {
+  //Récupère le profile via l'url `/profiles/${user.uid}`
+  this.dataService.getProfile(user).subscribe((profile) =>{
+    this.userProfile = <Profile>profile.val();
+    //Quand l'utilisateur est bien chargé, on le signal à l'application
+    this.existingProfile.emit(this.userProfile);
+    this.loader.dismiss();
+  })
+})
+*/
 //# sourceMappingURL=profile-view.js.map
 
 /***/ }),

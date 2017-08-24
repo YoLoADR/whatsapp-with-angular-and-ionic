@@ -5,6 +5,9 @@ import { Profile } from "../../models/profile/profile.interface";
 // C'est la raison pour laquelle on a renomer user par profile lors de ce commit, cela permet de mieux dissocier les deux
 import { User } from 'firebase/app';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import { AuthService } from "../auth/auth.service";
 /*
   Generated class for the DataProvider provider.
 
@@ -19,7 +22,16 @@ export class DataService {
   //Une liste ~-> une liste d'items
   profileList: FirebaseListObservable<Profile[]>
 
-  constructor(private angularFireDatabase: AngularFireDatabase) {}
+  constructor(private authService: AuthService,
+    private angularFireDatabase: AngularFireDatabase) {}
+
+  //Pour retourner qu'une réponse avec deux Observable on utilise mergeMap =~  (2 x .then) = 1 mergeMap
+  getAuthenticatedUserProfile(){
+    return this.authService.getAuthenticateUser()
+      .map(user => user.uid)
+      .mergeMap(authId => this.angularFireDatabase.object(`/profiles/${authId}`))
+      .take(1)
+  }
 
   getProfile(user: User){
     this.profileObject = this.angularFireDatabase.object(`/profiles/${user.uid}`, { preserveSnapshot: true});
