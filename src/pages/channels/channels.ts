@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { ChatService } from "../../providers/chat/chat.service";
 
 /**
  * Generated class for the ChannelsPage page.
@@ -15,11 +16,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChannelsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private chatService: ChatService,
+    private alertController: AlertController,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelsPage');
+  }
+
+  // handler permet de créer une fonction - data.channelName => name: 'channelName' (de l'input)
+  showAddChannelDialog(){
+    this.alertController.create({
+      title: 'Channel Name',
+      inputs: [{
+        name: 'channelName'
+      }],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Add',
+          handler: data => {
+            this.chatService.addChannel(data.channelName)
+          }
+        }
+      ]
+    }).present();
   }
 
 }
