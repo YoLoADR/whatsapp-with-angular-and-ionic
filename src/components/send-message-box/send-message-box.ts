@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 /**
  * Generated class for the SendMessageBoxComponent component.
@@ -11,12 +11,18 @@ import { Component } from '@angular/core';
   templateUrl: 'send-message-box.html'
 })
 export class SendMessageBoxComponent {
+  @Output() sendMessage: EventEmitter<string>
 
-  text: string;
+  content: string;
 
   constructor() {
-    console.log('Hello SendMessageBoxComponent Component');
-    this.text = 'Hello World';
+    this.sendMessage = new EventEmitter<string>();
   }
+
+  send(){
+    this.sendMessage.emit(this.content);
+    this.content = "";
+  }
+
 
 }
