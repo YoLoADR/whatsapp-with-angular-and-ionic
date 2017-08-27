@@ -4,6 +4,7 @@ import { Profile } from "../../models/profile/profile.interface";
 // (1) Interface / Model par default pour un User Firebase
 // C'est la raison pour laquelle on a renomer user par profile lors de ce commit, cela permet de mieux dissocier les deux
 import { User } from 'firebase/app';
+import {  database } from 'firebase';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -60,6 +61,22 @@ export class DataService {
     });
     //Take fais partie de rxjs ~ subscribe 1
     return query.take(1)
+  }
+
+  setUserOnline(profile: Profile){
+    const ref = database().ref(`online-users/${profile.$key}`)
+
+    try{
+      ref.update({...profile});
+      ref.onDisconnect().remove;
+    }
+    catch(e){
+      console.error(e);
+    }
+  }
+
+  getOnlineUsers(): FirebaseListObservable<Profile[]>{
+    return this.angularFireDatabase.list(`online-users`);
   }
 }
 

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
 import { Account } from './../../models/account/account.interface';
 import { LoginResponse } from "../../models/login/login-response.interface";
 import { NavController } from "ionic-angular";
@@ -22,8 +21,10 @@ export class LoginFormComponent {
   //On vas poser un écouteur sur le résultat de la méthode .auth.signInWithEmailAndPassword()
   @Output() loginStatus: EventEmitter<LoginResponse>;
 
-  constructor(private navController: NavController,
-  private authService: AuthService) {
+  constructor(
+    private navController: NavController,
+    private authService: AuthService
+  ) {
     this.loginStatus = new EventEmitter<LoginResponse>();
   }
 
