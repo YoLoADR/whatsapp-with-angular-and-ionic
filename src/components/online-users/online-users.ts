@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from "../../providers/data/data.service";
 import { FirebaseListObservable } from "angularfire2/database";
 import { Profile } from "../../models/profile/profile.interface";
+import { NavController } from "ionic-angular";
 
 /**
  * Generated class for the OnlineUsersComponent component.
@@ -21,7 +22,7 @@ export class OnlineUsersComponent implements OnInit {
 
   userList: FirebaseListObservable<Profile[]>;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private navController: NavController) {
   }
 
   //Chaque fois qu'un utilisateur se connecte à l'application la base de donnée des "utilisateurs connectés" se met à jour
@@ -35,6 +36,10 @@ export class OnlineUsersComponent implements OnInit {
   getOnlineUsers(){
     this.userList = this.dataService.getOnlineUsers();
     console.log("userList", this.userList);
+  }
+
+  openChat(profile: Profile){
+    this.navController.push('MessagePage', { profile })
   }
 
 }
