@@ -5,11 +5,11 @@ webpackJsonp([4],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(431);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(417);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,49 +18,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
+//import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var RegisterPageModule = (function () {
+    function RegisterPageModule() {
     }
-    return LoginPageModule;
+    return RegisterPageModule;
 }());
-LoginPageModule = __decorate([
+RegisterPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
-            __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
         ],
     })
-], LoginPageModule);
+], RegisterPageModule);
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=register.module.js.map
 
 /***/ }),
 
-/***/ 420:
+/***/ 417:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_form_login_form__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_form_register_form__ = __webpack_require__(422);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_profile_form_edit_profile_form__ = __webpack_require__(423);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__ = __webpack_require__(424);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__ = __webpack_require__(426);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_form_login_form__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_form_register_form__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_profile_form_edit_profile_form__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__ = __webpack_require__(425);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -84,7 +87,8 @@ ComponentsModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__["a" /* ProfileViewComponent */],
             __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */],
             __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__["a" /* SendMessageBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */]
+            __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__["a" /* OnlineUsersComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */]
@@ -96,7 +100,8 @@ ComponentsModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__profile_view_profile_view__["a" /* ProfileViewComponent */],
             __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */],
             __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__["a" /* SendMessageBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */]
+            __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__["a" /* OnlineUsersComponent */]
         ]
     })
 ], ComponentsModule);
@@ -105,14 +110,14 @@ ComponentsModule = __decorate([
 
 /***/ }),
 
-/***/ 421:
+/***/ 418:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginFormComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__ = __webpack_require__(79);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -208,13 +213,13 @@ LoginFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 422:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterFormComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth_service__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth_service__ = __webpack_require__(79);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -305,13 +310,13 @@ RegisterFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 423:
+/***/ 420:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfileFormComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth_service__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth_service__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__ = __webpack_require__(271);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -425,15 +430,15 @@ EditProfileFormComponent = __decorate([
 
 /***/ }),
 
-/***/ 424:
+/***/ 421:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileViewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(139);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -503,7 +508,7 @@ ProfileViewComponent = __decorate([
 
 /***/ }),
 
-/***/ 425:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -563,7 +568,7 @@ ProfileSearchComponent = __decorate([
 
 /***/ }),
 
-/***/ 426:
+/***/ 423:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -610,7 +615,7 @@ SendMessageBoxComponent = __decorate([
 
 /***/ }),
 
-/***/ 427:
+/***/ 424:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -658,14 +663,13 @@ ChatMessageComponent = __decorate([
 
 /***/ }),
 
-/***/ 431:
+/***/ 425:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OnlineUsersComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__ = __webpack_require__(271);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -677,36 +681,85 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+/**
+ * Generated class for the OnlineUsersComponent component.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ * for more info on Angular Components.
+ */
+var OnlineUsersComponent = (function () {
+    function OnlineUsersComponent(dataService) {
+        this.dataService = dataService;
+    }
+    OnlineUsersComponent.prototype.ngOnInit = function () {
+        this.setOnlineUser();
+        this.getOnlineUsers();
+    };
+    //Chaque fois qu'un utilisateur se connecte à l'application la base de donnée des "utilisateurs connectés" se met à jour
+    OnlineUsersComponent.prototype.setOnlineUser = function () {
+        var _this = this;
+        this.dataService.getAuthenticatedUserProfile().subscribe(function (profile) {
+            console.log("profile", profile);
+            _this.dataService.setUserOnline(profile);
+        });
+    };
+    OnlineUsersComponent.prototype.getOnlineUsers = function () {
+        this.userList = this.dataService.getOnlineUsers();
+        console.log("userList", this.userList);
+    };
+    return OnlineUsersComponent;
+}());
+OnlineUsersComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'online-users',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/online-users/online-users.html"*/'<!-- Generated template for the OnlineUsersComponent component -->\n<ion-list>\n <ion-item-divider></ion-item-divider>\n  <ion-item *ngFor="let user of userList | async">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="">\n    </ion-avatar>\n    <h2>{{user.firstName}} {{user.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/online-users/online-users.html"*/
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */]) === "function" && _a || Object])
+], OnlineUsersComponent);
+
+var _a;
+//# sourceMappingURL=online-users.js.map
+
+/***/ }),
+
+/***/ 435:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(139);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the RegisterPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var LoginPage = (function () {
-    function LoginPage(dataService, navCtrl, toastController) {
-        this.dataService = dataService;
-        this.navCtrl = navCtrl;
+var RegisterPage = (function () {
+    function RegisterPage(toastController, navCtrl, navParams) {
         this.toastController = toastController;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
     }
-    LoginPage.prototype.login = function (event) {
-        var _this = this;
-        console.log("Equipe d'intervention login() du batiment LoginPage avons bien reçu le signal :", event);
+    RegisterPage.prototype.register = function (event) {
+        console.log("Equipe d'intervention register() du batiment RegisterPage avons bien reçu le signal :", event);
         // event peut être égale à deux reponse différentes => soit {result: S} soit {error: O}
         if (!event.error) {
+            this.navCtrl.setRoot('ProfilePage');
             this.toastController.create({
-                message: "Vous \u00EAtes connect\u00E9 via " + event.result.email,
+                message: "Bienvenu " + event.result.email,
                 duration: 3000
             }).present();
-            /**
-             * Au debut l'utilisateur se connecte avec son mail et son mots de passe - rien de plus, dans ce cas la on lui demande d'éditer son profile (nom, prenom ...)
-             * Si le profile existe deja on le redirige vers TabsPage, sinon on lui propose d'éditer son profil (pour avoir plus d'information)
-             */
-            this.dataService.getProfile(event.result).subscribe(function (profile) {
-                console.log("profile", profile);
-                profile.val() ? _this.navCtrl.setRoot('TabsPage') : _this.navCtrl.setRoot('EditProfilePage');
-            });
         }
         else if (event.error) {
             this.toastController.create({
@@ -715,18 +768,17 @@ var LoginPage = (function () {
             }).present();
         }
     };
-    return LoginPage;
+    return RegisterPage;
 }());
-LoginPage = __decorate([
+RegisterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <img src="assets/img/logo_renault2.png" alt="logo">\n  <!--\n    On se met à l\'écoute du signal (loginStatus)="$event"\n    Avec ce signal l\'équipe d\'intervention "login()" fera une action\n  -->\n  <app-login-form (loginStatus)="login($event)"></app-login-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/login/login.html"*/,
+        selector: 'page-register',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/register/register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-register-form (registerStatus)="register($event)"></app-register-form>\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/register/register.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_data_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
-], LoginPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+], RegisterPage);
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=register.js.map
 
 /***/ })
 

@@ -7,7 +7,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
-import { InboxPage } from "../pages/inbox/inbox";
 
 import { firebaseConfig } from './app.firebase.config';
 import { AuthService } from '../providers/auth/auth.service';
@@ -18,8 +17,7 @@ import { ChatService } from '../providers/chat/chat.service';
 
 @NgModule({
   declarations: [
-    MyApp,
-    InboxPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -31,8 +29,7 @@ import { ChatService } from '../providers/chat/chat.service';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    InboxPage
+    MyApp
   ],
   providers: [
     StatusBar,
