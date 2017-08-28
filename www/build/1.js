@@ -725,46 +725,6 @@ OnlineUsersComponent = __decorate([
 
 /***/ }),
 
-/***/ 471:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MESSAGE_LIST; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_profile__ = __webpack_require__(472);
-
-var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
-var messageList = [];
-// profileList.forEach((profile) => {
-//   messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-//   messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-// });
-// const messageList: Messages[] = [
-//   { user: userList[0], date: new Date()},
-//   { user: userList[1], date: new Date()},
-//   { user: userList[2], date: new Date()},
-//   { user: userList[3], date: new Date()}
-// ];
-var MESSAGE_LIST = messageList;
-//# sourceMappingURL=messages.js.map
-
-/***/ }),
-
-/***/ 472:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PROFILE_LIST; });
-var profileList = [
-    { firstName: 'Yohann', lastName: 'Atticot', avatar: 'assets/img/avatar.png', email: 'yohann@paul.com', dateOfBirth: new Date() },
-    { firstName: 'Laura', lastName: 'Atticot', avatar: 'assets/img/avatar.png', email: 'laura@paul.com', dateOfBirth: new Date() },
-    { firstName: 'Cedric', lastName: 'Atticot', avatar: 'assets/img/avatar.png', email: 'cedric@paul.com', dateOfBirth: new Date() },
-    { firstName: 'Pauline', lastName: 'Atticot', avatar: 'assets/img/avatar.png', email: 'pauline@paul.com', dateOfBirth: new Date() },
-];
-var PROFILE_LIST = profileList;
-//# sourceMappingURL=profile.js.map
-
-/***/ }),
-
 /***/ 478:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -772,10 +732,9 @@ var PROFILE_LIST = profileList;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessagePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_data_data_service__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_chat_chat_service__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_data_data_service__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_chat_chat_service__ = __webpack_require__(296);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -825,7 +784,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
 /**
  * Generated class for the MessagePage page.
  *
@@ -839,7 +797,6 @@ var MessagePage = (function () {
         this.chatService = chatService;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.messageList = __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__["a" /* MESSAGE_LIST */];
     }
     MessagePage.prototype.ionViewWillLoad = function () {
         var _this = this;
@@ -851,6 +808,7 @@ var MessagePage = (function () {
             _this.userProfile = profile;
             _this.userId = profile.$key;
         });
+        this.messageList = this.chatService.getChats(this.selectedProfile.$key);
     };
     MessagePage.prototype.sendMessage = function (content) {
         return __awaiter(this, void 0, void 0, function () {
@@ -885,15 +843,12 @@ var MessagePage = (function () {
 MessagePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/'<!--\n  Generated template for the MessagePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{selectedProfile?.firstName}}  {{selectedProfile?.lastName}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-chat-message *ngFor="let message of messageList; let index = index" [userId]="userId" [chatMessage]="message"></app-chat-message>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n      <app-send-message-box (sendMessage)="sendMessage($event)"></app-send-message-box>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/,
+        selector: 'page-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/'<!--\n  Generated template for the MessagePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{selectedProfile?.firstName}}  {{selectedProfile?.lastName}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-chat-message *ngFor="let message of messageList | async" [userId]="userId" [chatMessage]="message"></app-chat-message>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n      <app-send-message-box (sendMessage)="sendMessage($event)"></app-send-message-box>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__["a" /* AuthService */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_data_data_service__["a" /* DataService */],
-        __WEBPACK_IMPORTED_MODULE_5__providers_chat_chat_service__["a" /* ChatService */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_data_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_data_data_service__["a" /* DataService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_chat_chat_service__["a" /* ChatService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_chat_chat_service__["a" /* ChatService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _e || Object])
 ], MessagePage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=message.js.map
 
 /***/ })
