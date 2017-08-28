@@ -75,4 +75,22 @@ export class ChatService {
         )
       })
   }
+
+  // Cette methode à un rapport avec le local storage
+  getLastMessagesForUser(): Observable<Messages[]>{
+    return this.authService.getAuthenticateUser()
+      .map(auth => auth.uid)
+      .mergeMap(authId => this.angularFireDatabase.list(`/last-messages/${authId}`))
+      .mergeMap(messageIds => {
+        return Observable.forkJoin(
+          messageIds.map(message => {
+            return this.angularFireDatabase.object(`/messages/${message.key}`)
+            .first()
+          }),
+          (...values) => {
+            return values;
+          }
+        )
+      })
+  }
 }
