@@ -386,6 +386,25 @@ var ChatService = (function () {
             });
         });
     };
+    // Cette methode à un rapport avec le local storage
+    ChatService.prototype.getLastMessagesForUser = function () {
+        var _this = this;
+        return this.authService.getAuthenticateUser()
+            .map(function (auth) { return auth.uid; })
+            .mergeMap(function (authId) { return _this.angularFireDatabase.list("/last-messages/" + authId); })
+            .mergeMap(function (messageIds) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].forkJoin(messageIds.map(function (message) {
+                return _this.angularFireDatabase.object("/messages/" + message.key)
+                    .first();
+            }), function () {
+                var values = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    values[_i] = arguments[_i];
+                }
+                return values;
+            });
+        });
+    };
     return ChatService;
 }());
 ChatService = __decorate([

@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InboxPageModule", function() { return InboxPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inbox__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inbox__ = __webpack_require__(476);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(466);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56,12 +56,14 @@ InboxPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__ = __webpack_require__(474);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__last_message_list_last_message_list__ = __webpack_require__(475);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -87,7 +89,8 @@ ComponentsModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */],
             __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__["a" /* SendMessageBoxComponent */],
             __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__["a" /* OnlineUsersComponent */]
+            __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__["a" /* OnlineUsersComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__last_message_list_last_message_list__["a" /* LastMessageListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */]
@@ -100,7 +103,8 @@ ComponentsModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_6__profile_search_profile_search__["a" /* ProfileSearchComponent */],
             __WEBPACK_IMPORTED_MODULE_7__send_message_box_send_message_box__["a" /* SendMessageBoxComponent */],
             __WEBPACK_IMPORTED_MODULE_8__chat_message_chat_message__["a" /* ChatMessageComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__["a" /* OnlineUsersComponent */]
+            __WEBPACK_IMPORTED_MODULE_9__online_users_online_users__["a" /* OnlineUsersComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__last_message_list_last_message_list__["a" /* LastMessageListComponent */]
         ]
     })
 ], ComponentsModule);
@@ -716,7 +720,7 @@ var OnlineUsersComponent = (function () {
 }());
 OnlineUsersComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'online-users',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/online-users/online-users.html"*/'<!-- Generated template for the OnlineUsersComponent component -->\n<ion-list>\n <ion-item-divider></ion-item-divider>\n  <ion-item *ngFor="let user of userList | async" (click)="openChat(user)">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="">\n    </ion-avatar>\n    <h2>{{user.firstName}} {{user.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/online-users/online-users.html"*/
+        selector: 'online-users',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/online-users/online-users.html"*/'<!-- Generated template for the OnlineUsersComponent component -->\n<ion-list>\n <ion-item-divider>Online Users</ion-item-divider>\n  <ion-item *ngFor="let user of userList | async" (click)="openChat(user)">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="">\n    </ion-avatar>\n    <h2>{{user.firstName}} {{user.lastName}}</h2>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/online-users/online-users.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_data_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */]])
 ], OnlineUsersComponent);
@@ -729,10 +733,67 @@ OnlineUsersComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastMessageListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_chat_chat_service__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(153);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the LastMessageListComponent component.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ * for more info on Angular Components.
+ */
+var LastMessageListComponent = (function () {
+    function LastMessageListComponent(navController, chatService) {
+        this.navController = navController;
+        this.chatService = chatService;
+    }
+    LastMessageListComponent.prototype.ngOnInit = function () {
+        this.messageList$ = this.chatService.getLastMessagesForUser();
+        console.log("this.messageList$", this.messageList$);
+    };
+    LastMessageListComponent.prototype.navigateToMessage = function (message) {
+        var selectedProfile = {
+            $key: message.userToId,
+            firstName: message.userToProfile.firstName,
+            lastNames: message.userToProfile.lastName
+        };
+        this.navController.push('MessagePage', { profile: selectedProfile });
+    };
+    return LastMessageListComponent;
+}());
+LastMessageListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'app-last-message-list',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/last-message-list/last-message-list.html"*/'<!-- Generated template for the LastMessageListComponent component -->\n<ion-list>\n  <ion-item-divider>Last Message</ion-item-divider>\n  <ion-item *ngFor="let message of messageList$ | async" (click)="navigateToMessage(message)">\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="">\n    </ion-avatar>\n    <h2>{{message?.userToProfile?.firstName}} {{message?.userToProfile?.lastName}}</h2>\n    <p>{{message?.content}}</p>\n  </ion-item>\n</ion-list>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/last-message-list/last-message-list.html"*/
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__providers_chat_chat_service__["a" /* ChatService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_chat_chat_service__["a" /* ChatService */]) === "function" && _b || Object])
+], LastMessageListComponent);
+
+var _a, _b;
+//# sourceMappingURL=last-message-list.js.map
+
+/***/ }),
+
+/***/ 476:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InboxPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__ = __webpack_require__(477);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -766,7 +827,7 @@ var InboxPage = (function () {
 InboxPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-inbox',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/'<!--\n  Generated template for the InboxPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Inbox</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="navigateToSearchUserPage()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <online-users></online-users>\n  <!-- <ion-list>\n    <ion-item *ngFor="let message of messageList">\n      <ion-avatar item-left>\n        <img [src]="message.profile.avatar" alt="avatar">\n      </ion-avatar>\n      <h2>{{message.profile.firstName + \' \' + message.profile.lastName}}</h2>\n      <p>{{message.lastMessage}}</p>\n    </ion-item>\n  </ion-list> -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/,
+        selector: 'page-inbox',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/'<!--\n  Generated template for the InboxPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Inbox</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="navigateToSearchUserPage()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <app-last-message-list></app-last-message-list>\n  <online-users></online-users>\n  <!-- <ion-list>\n    <ion-item *ngFor="let message of messageList">\n      <ion-avatar item-left>\n        <img [src]="message.profile.avatar" alt="avatar">\n      </ion-avatar>\n      <h2>{{message.profile.firstName + \' \' + message.profile.lastName}}</h2>\n      <p>{{message.lastMessage}}</p>\n    </ion-item>\n  </ion-list> -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/inbox/inbox.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], InboxPage);
@@ -775,12 +836,12 @@ InboxPage = __decorate([
 
 /***/ }),
 
-/***/ 476:
+/***/ 477:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MESSAGE_LIST; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_profile__ = __webpack_require__(477);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_profile__ = __webpack_require__(478);
 
 var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
 var messageList = [];
@@ -799,7 +860,7 @@ var MESSAGE_LIST = messageList;
 
 /***/ }),
 
-/***/ 477:
+/***/ 478:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
