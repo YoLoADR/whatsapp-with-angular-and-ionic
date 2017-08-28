@@ -15,7 +15,7 @@ export class ChatMessageComponent {
 
   text: string;
   @Input() chatMessage: Messages;
-  @Input() chatIndex: number;
+  @Input() userId: string;
 
   constructor() {
     console.log('Hello ChatMessageComponent Component');

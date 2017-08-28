@@ -1,6 +1,14 @@
-import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { Injectable } from '@angular/core';
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/first';
+
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/mergeMap';
+
+import { AuthService } from "../auth/auth.service";
+import { Messages } from "../../models/messages/messages.interface";
 import { Channels } from "../../models/channels/channels.interface";
 import { ChannelMessage } from "../../models/channels/channel-message.interface";
 
@@ -13,7 +21,10 @@ import { ChannelMessage } from "../../models/channels/channel-message.interface"
 @Injectable()
 export class ChatService {
 
-  constructor(public angularFireDatabase: AngularFireDatabase) {
+  constructor(
+    public angularFireDatabase: AngularFireDatabase,
+    private authService: AuthService,
+  ) {
   }
 
 
@@ -41,4 +52,27 @@ export class ChatService {
     await this.angularFireDatabase.list(`channels/${channelKey}`).push({ content: channelMessage });
   }
 
+  async sendChat(message: Messages) {
+    try{
+      await this.angularFireDatabase.list('/messages/').push(message)
+    }
+    catch(e){
+      console.error(e);
+    }
+  }
+
+  getChats(userTwoId: string){
+    return this.authService.getAuthenticateUser()
+      .map(auth => auth.uid)
+      .mergeMap(uid => this.angularFireDatabase.list(`/user-messages/${uid}/${userTwoId}`))
+      .mergeMap(chats => {
+        return Observable.forkJoin(
+          chats.map(chat => this.angularFireDatabase.object(`/messages/${chat.$key}`)
+          .first()),
+          (...vals :Messages[]) => {
+          return vals;
+          }
+        )
+      })
+  }
 }
