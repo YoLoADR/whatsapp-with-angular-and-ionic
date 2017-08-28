@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
 import { Channels } from "../../models/channels/channels.interface";
 import { ChannelMessage } from "../../models/channels/channel-message.interface";
+import { Messages } from "../../models/messages/messages.interface";
 
 /*
   Generated class for the ChatProvider provider.
@@ -39,6 +40,15 @@ export class ChatService {
 
   async addChannelMessage(channelKey: string, channelMessage: string){
     await this.angularFireDatabase.list(`channels/${channelKey}`).push({ content: channelMessage });
+  }
+
+  async sendChat(message: Messages) {
+    try{
+      await this.angularFireDatabase.list('/messages/').push(message)
+    }
+    catch(e){
+      console.error(e);
+    }
   }
 
 }

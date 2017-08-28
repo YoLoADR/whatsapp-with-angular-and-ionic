@@ -339,13 +339,34 @@ var ChatService = (function () {
             });
         });
     };
+    ChatService.prototype.sendChat = function (message) {
+        return __awaiter(this, void 0, void 0, function () {
+            var e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.angularFireDatabase.list('/messages/').push(message)];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.error(e_1);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return ChatService;
 }());
 ChatService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
 ], ChatService);
 
+var _a;
 //# sourceMappingURL=chat.service.js.map
 
 /***/ }),
