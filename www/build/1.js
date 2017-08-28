@@ -649,11 +649,11 @@ __decorate([
 ], ChatMessageComponent.prototype, "chatMessage", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Number)
-], ChatMessageComponent.prototype, "chatIndex", void 0);
+    __metadata("design:type", String)
+], ChatMessageComponent.prototype, "userId", void 0);
 ChatMessageComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'app-chat-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/'<!-- Generated template for the ChatMessageComponent component -->\n<ion-item *ngIf="chatIndex % 2 === 0; else right">\n  <ion-avatar item-left>\n    <img src="assets/img/avatar.png" alt="Avatar">\n  </ion-avatar>\n  <h2>Yohann Atticot</h2>\n  <h3>Test</h3>\n</ion-item>\n\n<ng-template #right>\n  <ion-item class="chat-message__message-right">\n    <ion-avatar item-right>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>Laura Atticot</h2>\n    <p>Test</p>\n  </ion-item>\n</ng-template>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/
+        selector: 'app-chat-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/'<!-- Generated template for the ChatMessageComponent component -->\n<!-- Si l\'id du message est égale (=)  à l\'id de l\'utilisateur (courant) connecter au démarrage de l\'application -->\n<ion-item no-lines class="chat-message__message-right" *ngIf="chatMessage.userToId === userId; else from">\n  <ion-avatar item-right>\n    <img src="assets/img/avatar.png" alt="Avatar">\n  </ion-avatar>\n  <h2>{{chatMessage?.userFromProfile?.firstName}} {{chatMessage?.userFromProfile?.lastName}}</h2>\n  <p>{{chatMessage.content}}</p>\n</ion-item>\n\n<ng-template #from>\n  <ion-item no-lines>\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>{{chatMessage?.userFromProfile?.firstName}} {{chatMessage?.userFromProfile?.lastName}}</h2>\n    <p>{{chatMessage.content}}</p>\n  </ion-item>\n</ng-template>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], ChatMessageComponent);
@@ -734,10 +734,10 @@ OnlineUsersComponent = __decorate([
 
 var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
 var messageList = [];
-profileList.forEach(function (profile) {
-    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-});
+// profileList.forEach((profile) => {
+//   messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
+//   messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
+// });
 // const messageList: Messages[] = [
 //   { user: userList[0], date: new Date()},
 //   { user: userList[1], date: new Date()},
@@ -773,6 +773,7 @@ var PROFILE_LIST = profileList;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__ = __webpack_require__(86);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -785,6 +786,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the MessagePage page.
  *
@@ -792,23 +794,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var MessagePage = (function () {
-    function MessagePage(navCtrl, navParams) {
+    function MessagePage(authService, navCtrl, navParams) {
+        this.authService = authService;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.messageList = __WEBPACK_IMPORTED_MODULE_2__mocks_messages_messages__["a" /* MESSAGE_LIST */];
     }
     MessagePage.prototype.ionViewWillLoad = function () {
+        var _this = this;
         console.log('profile', this.navParams.get('profile'));
+        // (1) Récupère l'utilisateur sélectionné via un click sur un un item
         this.selectedProfile = this.navParams.get('profile');
+        // (2) Récupère un utilisateur via authentification au démarrage de l'application
+        this.authService.getAuthenticateUser()
+            .subscribe(function (auth) { return _this.userId = auth.uid; });
     };
     return MessagePage;
 }());
 MessagePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/'<!--\n  Generated template for the MessagePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{selectedProfile?.firstName}}  {{selectedProfile?.lastName}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-chat-message *ngFor="let message of messageList; let index = index" [chatIndex]="index" [chatMessage]="message"></app-chat-message>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n      <app-send-message-box></app-send-message-box>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/,
+        selector: 'page-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/'<!--\n  Generated template for the MessagePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{selectedProfile?.firstName}}  {{selectedProfile?.lastName}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <app-chat-message *ngFor="let message of messageList; let index = index" [userId]="userId" [chatMessage]="message"></app-chat-message>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n      <app-send-message-box></app-send-message-box>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/pages/message/message.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__["a" /* AuthService */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], MessagePage);
 
 //# sourceMappingURL=message.js.map

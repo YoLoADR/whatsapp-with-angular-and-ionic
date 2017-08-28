@@ -649,11 +649,11 @@ __decorate([
 ], ChatMessageComponent.prototype, "chatMessage", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Number)
-], ChatMessageComponent.prototype, "chatIndex", void 0);
+    __metadata("design:type", String)
+], ChatMessageComponent.prototype, "userId", void 0);
 ChatMessageComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'app-chat-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/'<!-- Generated template for the ChatMessageComponent component -->\n<ion-item *ngIf="chatIndex % 2 === 0; else right">\n  <ion-avatar item-left>\n    <img src="assets/img/avatar.png" alt="Avatar">\n  </ion-avatar>\n  <h2>Yohann Atticot</h2>\n  <h3>Test</h3>\n</ion-item>\n\n<ng-template #right>\n  <ion-item class="chat-message__message-right">\n    <ion-avatar item-right>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>Laura Atticot</h2>\n    <p>Test</p>\n  </ion-item>\n</ng-template>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/
+        selector: 'app-chat-message',template:/*ion-inline-start:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/'<!-- Generated template for the ChatMessageComponent component -->\n<!-- Si l\'id du message est égale (=)  à l\'id de l\'utilisateur (courant) connecter au démarrage de l\'application -->\n<ion-item no-lines class="chat-message__message-right" *ngIf="chatMessage.userToId === userId; else from">\n  <ion-avatar item-right>\n    <img src="assets/img/avatar.png" alt="Avatar">\n  </ion-avatar>\n  <h2>{{chatMessage?.userFromProfile?.firstName}} {{chatMessage?.userFromProfile?.lastName}}</h2>\n  <p>{{chatMessage.content}}</p>\n</ion-item>\n\n<ng-template #from>\n  <ion-item no-lines>\n    <ion-avatar item-left>\n      <img src="assets/img/avatar.png" alt="Avatar">\n    </ion-avatar>\n    <h2>{{chatMessage?.userFromProfile?.firstName}} {{chatMessage?.userFromProfile?.lastName}}</h2>\n    <p>{{chatMessage.content}}</p>\n  </ion-item>\n</ng-template>\n'/*ion-inline-end:"/Users/yatticot/Documents/laboratoire/whatsapp-with-angular-and-ionic/src/components/chat-message/chat-message.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], ChatMessageComponent);
@@ -734,10 +734,10 @@ OnlineUsersComponent = __decorate([
 
 var profileList = __WEBPACK_IMPORTED_MODULE_0__profile_profile__["a" /* PROFILE_LIST */];
 var messageList = [];
-profileList.forEach(function (profile) {
-    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-    messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
-});
+// profileList.forEach((profile) => {
+//   messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
+//   messageList.push({ profile: profile, date: new Date(), lastMessage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quia aliquam nisi laboriosam sequi quisquam, inventore vitae voluptatem, ducimus animi, totam adipisci sint blanditiis earum quae nam. Cumque, quasi necessitatibus!" });
+// });
 // const messageList: Messages[] = [
 //   { user: userList[0], date: new Date()},
 //   { user: userList[1], date: new Date()},
